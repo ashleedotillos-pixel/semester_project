@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+
 import 'app.dart';
-void main() {
-runApp(const SemesterProjectApp());
-}
-=======
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SemesterProjectApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -126,4 +122,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
->>>>>>> 8955e1c6a713e3ab5208624d588c61134be06052
