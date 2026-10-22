@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>IT 110 - Lab Activity 9 - Student Portal</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 11.5pt;
+    line-height: 1.5;
+    color: #111;
+    margin: 0;
+  }
+  h1 {
+    font-size: 16pt;
+    margin: 0 0 2mm;
+    text-align: center;
+    letter-spacing: .2px;
+  }
+  .sub {
+    text-align: center;
+    font-size: 11pt;
+    margin: 0 0 6mm;
+    color: #333;
+  }
+  h2 {
+    font-size: 12.5pt;
+    margin: 7mm 0 2.5mm;
+    border-bottom: 1px solid #999;
+    padding-bottom: 1mm;
+  }
+  p { margin: 0 0 3mm; text-align: justify; }
+  .repo {
+    background: #f4f4f4;
+    border-left: 3px solid #1b5e20;
+    padding: 3mm 4mm;
+    font-size: 10.5pt;
+    margin: 0 0 3mm;
+  }
+  .repo div { margin: 1mm 0; }
+  .repo b { display: inline-block; min-width: 28mm; }
+  code { font-family: Consolas, monospace; font-size: 10pt; }
+  figure {
+    margin: 0 0 6mm;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  figure img {
+    display: block;
+    width: 100%;
+    border: 1px solid #bbb;
+  }
+  figcaption { margin-top: 2mm; font-size: 10.5pt; }
+  figcaption .label { font-weight: bold; }
+  .page-break { page-break-before: always; break-before: page; }
+</style>
+</head>
+<body>
+
+<h1>IT 110 &mdash; Lab Activity 9</h1>
+<p class="sub">Reusable Screens, Shared Widgets, and Asynchronous UI States<br>
+Project: <b>Student Portal</b> (continuation of Lab Activity 8)</p>
+
+<h2>Activity 9 Summary</h2>
+<p>
+Activity 9 extended the existing Student Portal project instead of rebuilding it. The Activity&nbsp;8
+Home and Login screens were kept as they were, and a new <code>/report</code> route was added in
+<code>app.dart</code> so the Report Form screen (<code>lib/screens/report_form_screen.dart</code>) opens
+from a button on the Home screen and can be left again with the Back button. The new screen is a real
+report form for the group&rsquo;s approved system, with five fields (report title, category, location,
+priority and description), field-level validation for every required input, and a simulated submission
+whose data is stored in <code>services/report_service.dart</code> and modelled by
+<code>models/student_report.dart</code>. It demonstrates the four asynchronous UI responses &mdash;
+Loading, Success, Empty and Error &mdash; with a spinner and a disabled submit button while a request
+is pending, a confirmation with the saved report on success, a no-data panel with a first-report action
+when nothing exists yet, and a clear failure message with a working Retry. The form reuses the shared
+<code>AppButton</code> and <code>AppTextField</code> widgets from <code>lib/widgets/</code> in more than
+one context, so the styling and behaviour stay consistent with the Activity&nbsp;8 screens, and because
+all data access goes through the service layer, the simulated responses can later be replaced by the real
+REST API and PostgreSQL database without changing the screens.
+</p>
+
+<h2>Updated GitHub Repository</h2>
+<div class="repo">
+  <div><b>Repository:</b> <code>https://github.com/ashleedotillos-pixel/semester_project</code></div>
+  <div><b>Branch:</b> <code>main</code></div>
+  <div><b>Commit:</b> <code>82e1863</code> &mdash; Refresh Activity 9 VS Code screenshots</div>
+  <div><b>Activity 9 commit:</b> <code>9511d9d</code> &mdash; Add report form screen with loading, success, empty and error states</div>
+  <div><b>Commit link:</b> <code>https://github.com/ashleedotillos-pixel/semester_project/commit/9511d9d</code></div>
+</div>
+
+<h2>Screenshots</h2>
+
+<figure>
+  <img src="../screenshots/activity9/screenshot1_project_structure.png" alt="Screenshot 1 - project structure">
+  <figcaption>
+    <span class="label">Screenshot 1 &mdash; Updated screen/widget structure.</span>
+    The VS Code Explorer shows the project folder <code>semester_project</code> with the Activity&nbsp;8
+    files still in place (<code>home_screen.dart</code>, <code>login_screen.dart</code>,
+    <code>app_button.dart</code>, <code>app_text_field.dart</code>) and the new
+    <code>lib/screens/report_form_screen.dart</code> added beside them.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="../screenshots/activity9/screenshot2_widget_reuse.png" alt="Screenshot 2 - shared widget reuse">
+  <figcaption>
+    <span class="label">Screenshot 2 &mdash; Shared widget reused in two contexts.</span>
+    The left editor shows <code>AppTextField</code> and <code>AppButton</code> being used inside
+    <code>report_form_screen.dart</code>, while the right editor shows the same <code>AppButton</code>
+    from <code>lib/widgets/app_button.dart</code> being used in the existing
+    <code>home_screen.dart</code>.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="../screenshots/activity9/screenshot3_loading_state.png" alt="Screenshot 3 - loading state">
+  <figcaption>
+    <span class="label">Screenshot 3 &mdash; LOADING.</span>
+    <b>Triggering action:</b> a student fills in a valid report and presses <i>Submit Report</i>, and
+    while the request is pending the screen shows a spinner message and keeps the submit button disabled
+    so the same report cannot be submitted twice.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="../screenshots/activity9/screenshot4_success_state.png" alt="Screenshot 4 - success state">
+  <figcaption>
+    <span class="label">Screenshot 4 &mdash; SUCCESS.</span>
+    <b>Triggering action:</b> the student waits for the pending submission to finish, and the screen
+    replaces the form with a confirmation, the saved report and the <i>Submit Another Report</i> and
+    <i>View All Reports</i> actions.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="../screenshots/activity9/screenshot5_empty_state.png" alt="Screenshot 5 - empty state">
+  <figcaption>
+    <span class="label">Screenshot 5 &mdash; EMPTY.</span>
+    <b>Triggering action:</b> the student presses <i>View Reports</i> before creating any report, so the
+    screen returns an empty list and shows the no-data message with the <i>Create Your First Report</i>
+    and <i>Refresh Reports</i> actions.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="../screenshots/activity9/screenshot6_error_state.png" alt="Screenshot 6 - error state">
+  <figcaption>
+    <span class="label">Screenshot 6 &mdash; ERROR.</span>
+    <b>Triggering action:</b> the student turns on the <i>Simulate a server error (demo only)</i> switch
+    and submits a valid report, and the screen shows a clear failure explanation together with the
+    <i>Retry</i> and <i>Edit Report</i> actions.
+  </figcaption>
+</figure>
+
+<p style="font-size:9.5pt;color:#555;margin-top:4mm;">
+  Note: all four asynchronous responses were produced by the simulated service
+  (<code>Future.delayed</code> with an in-memory list). No real database record was created, and the
+  screen labels every simulated response as such.
+</p>
+
+</body>
+</html>
