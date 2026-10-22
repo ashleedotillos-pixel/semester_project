@@ -73,12 +73,22 @@ All screenshots are in `screenshots/activity9/`.
 | 5 | `screenshot5_empty_state.png`       | **EMPTY** - no report exists yet, with the first-report action.      |
 | 6 | `screenshot6_error_state.png`       | **ERROR** - error message plus the *Retry* and *Edit Report* actions. |
 
+| 7 | `screenshot7_field_validation.png`   | **VALIDATION** - required-field messages under the empty inputs; the request is not sent. |
+
+## Evidence report (Activity 9)
+
+| File                                        | What it contains                                                                      |
+| ------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `docs/Activity9_Student_Portal_Report.docx` | Word evidence report: summary, GitHub link, verification checklist, screenshots, reflection. |
+| `docs/Activity9_Student_Portal_Report.pdf`  | The same report as PDF.                                                                 |
+| `docs/activity9_report.html`                | The source of the report (used to print the PDF).                                       |
+
 ## First checkpoint
 
 Date: October 15, 2026 | Commit: 4ec4b31
 
 ## Second checkpoint (Activity 9)
 
-Date: October 22, 2026 | Commit: see the Activity 9 commit in the repository history
+Date: October 22, 2026 | Commit: `9511d9d` - Add report form screen with loading, success, empty and error states
 
 Repository: https://github.com/ashleedotillos-pixel/semester_project
