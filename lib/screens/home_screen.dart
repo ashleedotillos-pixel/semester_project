@@ -66,14 +66,6 @@ class HomeScreen extends StatelessWidget {
                     Navigator.pushNamed(context, AppRoutes.login);
                   },
                 ),
-                const SizedBox(height: 28),
-                Text(
-                  AppConstants.appOwner,
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: Colors.grey,
-                  ),
-                ),
               ],
             ),
           ),

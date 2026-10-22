@@ -13,9 +13,6 @@ class AppConstants {
       'A web-based student portal for academic updates, report requests '
       'and account access.';
 
-  /// Owner / team shown in the Home screen footer.
-  static const String appOwner = 'BSIT 4 - Group 8';
-
   /// Categories a student can report, taken from the approved system.
   static const List<String> reportCategories = <String>[
     'Academic Performance',
